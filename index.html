@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mental Wellness Hub</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f7faf9; color:#333; }
+    header { background:#eaf7f3; padding:2rem; text-align:center; }
+    header h1 { margin:0; }
+    main { max-width:900px; margin:2rem auto; padding:0 1rem; }
+    section { margin-bottom:2rem; }
+    .card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:1rem; margin-bottom:1rem; }
+    footer { background:#f3f7f5; padding:1rem; text-align:center; font-size:0.9rem; color:#666; }
+
+    /* Chatbot styles */
+    .chat-launcher {
+      position: fixed; right: 1rem; bottom: 1rem;
+      background:#2f7d6d; color:#fff; border:none; border-radius:50%;
+      width:60px; height:60px; cursor:pointer; font-size:16px;
+    }
+    .chat-panel {
+      position: fixed; right: 1rem; bottom: 80px; width: 350px;
+      background:#fff; border:1px solid #ccc; border-radius:10px;
+      display:none; flex-direction:column; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+    .chat-header { background:#f3f7f5; padding:0.5rem; font-weight:bold; }
+    .chat-body { flex:1; overflow-y:auto; padding:0.5rem; }
+    .chat-footer { display:flex; border-top:1px solid #ddd; }
+    .chat-footer input { flex:1; padding:0.5rem; border:none; }
+    .chat-footer button { background:#2f7d6d; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; }
+    .msg { margin:0.5rem 0; }
+    .msg.user { text-align:right; }
+    .msg.bot { text-align:left; }
+    .bubble { display:inline-block; padding:0.5rem 0.75rem; border-radius:12px; max-width:80%; }
+    .user .bubble { background:#e6f3ef; }
+    .bot .bubble { background:#f0f0f0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mental Wellness Hub</h1>
+    <p>Your gentle space to learn, reflect, and practice small steps that support your wellbeing.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Self‑care foundations</h2>
+      <div class="card">Sleep rhythm: keep a consistent wake time, dim lights before bed.</div>
+      <div class="card">Gentle movement: short walks, stretching, or light yoga.</div>
+      <div class="card">Connection: text a friend, share a small win.</div>
+    </section>
+
+    <section>
+      <h2>Grounding exercises</h2>
+      <div class="card">Box breathing: inhale 4, hold 4, exhale 4, hold 4.</div>
+      <div class="card">5‑4‑3‑2‑1 senses: notice 5 things you see, 4 feel, 3 hear, 2 smell, 1 taste.</div>
+    </section>
+
+    <section>
+      <h2>Resources</h2>
+      <div class="card">Finding a therapist: check local directories or community clinics.</div>
+      <div class="card">Community & peers: peer support groups, NGOs, faith communities.</div>
+      <div class="card">In crisis: seek immediate, in‑person help from local emergency services.</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>This site provides general information only and isn’t medical advice. For personal guidance, speak with a qualified professional.</p>
+  </footer>
+
+  <!-- Chatbot -->
+  <button class="chat-launcher" id="chatToggle">💬</button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">Wellness Chatbot</div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot"><div class="bubble">Hi! I’m here to share grounding tips and self‑care ideas. How are you feeling today?</div></div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type a message…" />
+      <button id="chatSend">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = "https://n8ngc.codeblazar.org/webhook/f330b68b-3b5a-45b8-bb65-952280da2264";
+    const chatToggle = document.getElementById('chatToggle');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+
+    chatToggle.addEventListener('click', () => {
+      chatPanel.style.display = chatPanel.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    function addMessage(text, sender) {
+      const msg = document.createElement('div');
+      msg.className = 'msg ' + sender;
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.textContent = text;
+      msg.appendChild(bubble);
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      chatInput.value = '';
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        addMessage(data.reply || "No response received.", 'bot');
+      } catch (err) {
+        addMessage("Connection error with chatbot service.", 'bot');
+      }
+    }
+
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+  </script>
+</body>
+</html>
