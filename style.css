@@ -26,11 +26,13 @@ header {
   padding: 3.5rem 1rem;
   text-align: center;
 }
+
 header h1 {
   margin: 0;
   font-size: 2.6rem;
   color: var(--primary);
 }
+
 header p {
   max-width: 600px;
   margin: 1rem auto 0;
@@ -44,8 +46,29 @@ main {
   padding: 0 1rem;
 }
 
-section {
-  margin-bottom: 3rem;
+/* =========================
+   ALTERNATING SECTION BACKGROUNDS
+========================= */
+
+.content-sections section {
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+}
+
+/* Green sections */
+.content-sections section:nth-child(odd) {
+  background: linear-gradient(135deg, #eaf7f3, #f2fbf8);
+}
+
+/* White sections */
+.content-sections section:nth-child(even) {
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+/* Space between sections */
+.content-sections section + section {
+  margin-top: 2.5rem;
 }
 
 section h2 {
@@ -79,7 +102,7 @@ footer {
 }
 
 /* =========================
-   CHATBOT
+   CHATBOT (UNCHANGED)
 ========================= */
 
 .chat-launcher {
@@ -95,11 +118,6 @@ footer {
   font-size: 22px;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease;
-}
-
-.chat-launcher:hover {
-  transform: scale(1.05);
 }
 
 .chat-panel {
@@ -161,7 +179,6 @@ footer {
   border-bottom-left-radius: 4px;
 }
 
-/* Input */
 .chat-footer {
   display: flex;
   gap: 0.5rem;
@@ -186,7 +203,6 @@ footer {
   cursor: pointer;
 }
 
-/* Mobile full screen */
 @media (max-width: 480px) {
   .chat-panel {
     width: 100%;

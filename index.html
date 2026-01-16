@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <h1>Mental Wellness Hub</h1>
     <p>Your gentle space to learn, reflect, and practice small steps that support your wellbeing.</p>
   </header>
 
-  <main>
+  <main class="content-sections">
     <section>
       <h2>Self-care foundations</h2>
       <div class="card">🛌 Sleep rhythm: keep a consistent wake time, dim lights before bed.</div>
@@ -94,10 +95,8 @@
           body: JSON.stringify({ message: text })
         });
         const data = await res.json();
-        console.log("Webhook response:", data); // ✅ Debugging
         addMessage(data.output || "No response received.", "bot");
       } catch (err) {
-        console.error("Chatbot error:", err);
         addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
       }
     }
@@ -107,5 +106,6 @@
       if (e.key === "Enter") sendMessage();
     });
   </script>
+
 </body>
 </html>
