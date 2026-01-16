@@ -300,6 +300,21 @@ chatSend.onclick = sendMessage;
 chatInput.addEventListener("keydown", e => {
   if (e.key === "Enter") sendMessage();
 });
+
+try {
+  const res = await fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text })
+  });
+  const data = await res.json();
+  console.log("Webhook response:", data); // 👈 Add this
+  addMessage(data.reply || "No response received.", "bot");
+} catch (err) {
+  console.error("Chatbot error:", err); // 👈 Add this
+  addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
+}
+
 </script>
 
 </body>
