@@ -1,321 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mental Wellness Hub</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #f7faf9;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --primary: #2f7d6d;
-  --accent: #e6f3ef;
-  --border: #e5e7eb;
-}
-
-/* Base */
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-/* Header */
-header {
-  background: linear-gradient(135deg, #eaf7f3, #f7faf9);
-  padding: 3.5rem 1rem;
-  text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-size: 2.6rem;
-  color: var(--primary);
-}
-header p {
-  max-width: 600px;
-  margin: 1rem auto 0;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
-
-/* Main */
-main {
-  max-width: 1000px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-}
-section {
-  margin-bottom: 3rem;
-}
-section h2 {
-  color: var(--primary);
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-/* Cards */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.2rem 1.4rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-3px);
-}
-
-/* Footer */
-footer {
-  background: #f3f7f5;
-  padding: 1.2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* =========================
-   CHATBOT
-========================= */
-
-.chat-launcher {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: none;
-  background: var(--primary);
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease;
-}
-.chat-launcher:hover {
-  transform: scale(1.05);
-}
-
-.chat-panel {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 100px;
-  width: 420px;
-  height: 560px;
-  background: #fff;
-  border-radius: 18px;
-  display: none;
-  flex-direction: column;
-  box-shadow: 0 25px 45px rgba(0,0,0,0.25);
-  overflow: hidden;
-}
-
-.chat-header {
-  background: linear-gradient(135deg, #2f7d6d, #4aa899);
-  color: #fff;
-  padding: 1rem;
-  font-weight: 600;
-}
-
-.chat-body {
-  flex: 1;
-  padding: 1rem;
-  background: #f7faf9;
-  overflow-y: auto;
-}
-
-.msg {
-  display: flex;
-  margin-bottom: 0.75rem;
-}
-
-.msg.user { justify-content: flex-end; }
-.msg.bot { justify-content: flex-start; }
-
-.bubble {
-  padding: 0.75rem 1rem;
-  border-radius: 16px;
-  max-width: 75%;
-  font-size: 0.95rem;
-}
-
-.user .bubble {
-  background: var(--accent);
-  border-bottom-right-radius: 4px;
-}
-
-.bot .bubble {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-bottom-left-radius: 4px;
-}
-
-/* Input */
-.chat-footer {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  border-top: 1px solid var(--border);
-}
-
-.chat-footer input {
-  flex: 1;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  outline: none;
-  font-size: 0.95rem;
-}
-
-.chat-footer button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 0 1.2rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .chat-panel {
-    width: 100%;
-    height: 100%;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mental Wellness Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <header>
+    <h1>Mental Wellness Hub</h1>
+    <p>Your gentle space to learn, reflect, and practice small steps that support your wellbeing.</p>
+  </header>
 
-<header>
-  <h1>Mental Wellness Hub</h1>
-  <p>Your gentle space to learn, reflect, and practice small steps that support your wellbeing.</p>
-</header>
+  <main>
+    <section>
+      <h2>Self-care foundations</h2>
+      <div class="card">🛌 Sleep rhythm: keep a consistent wake time, dim lights before bed.</div>
+      <div class="card">🚶 Gentle movement: short walks, stretching, or light yoga.</div>
+      <div class="card">💬 Connection: text a friend, share a small win.</div>
+    </section>
 
-<main>
-  <section>
-    <h2>Self-care foundations</h2>
-    <div class="card">🛌 Sleep rhythm: keep a consistent wake time, dim lights before bed.</div>
-    <div class="card">🚶 Gentle movement: short walks, stretching, or light yoga.</div>
-    <div class="card">💬 Connection: text a friend, share a small win.</div>
-  </section>
+    <section>
+      <h2>Grounding exercises</h2>
+      <div class="card">🌬 Box breathing: inhale 4, hold 4, exhale 4, hold 4.</div>
+      <div class="card">👀 5-4-3-2-1 senses: notice 5 see, 4 feel, 3 hear, 2 smell, 1 taste.</div>
+    </section>
 
-  <section>
-    <h2>Grounding exercises</h2>
-    <div class="card">🌬 Box breathing: inhale 4, hold 4, exhale 4, hold 4.</div>
-    <div class="card">👀 5-4-3-2-1 senses: notice 5 see, 4 feel, 3 hear, 2 smell, 1 taste.</div>
-  </section>
+    <section>
+      <h2>Resources</h2>
+      <div class="card">🧠 Finding a therapist: check local directories or community clinics.</div>
+      <div class="card">🤝 Community & peers: support groups, NGOs, faith communities.</div>
+      <div class="card">🚨 In crisis: seek immediate in-person help from emergency services.</div>
+    </section>
+  </main>
 
-  <section>
-    <h2>Resources</h2>
-    <div class="card">🧠 Finding a therapist: check local directories or community clinics.</div>
-    <div class="card">🤝 Community & peers: support groups, NGOs, faith communities.</div>
-    <div class="card">🚨 In crisis: seek immediate in-person help from emergency services.</div>
-  </section>
-</main>
+  <footer>
+    This site provides general information only and isn’t medical advice.
+  </footer>
 
-<footer>
-  This site provides general information only and isn’t medical advice.
-</footer>
-
-<!-- Chatbot -->
-<button class="chat-launcher" id="chatToggle">💬</button>
-
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-header">Wellness Chatbot</div>
-  <div class="chat-body" id="chatBody">
-    <div class="msg bot">
-      <div class="bubble">
-        Hi 👋 I’m here to share grounding tips and self-care ideas. How are you feeling today?
+  <!-- Chatbot -->
+  <button class="chat-launcher" id="chatToggle">💬</button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">Wellness Chatbot</div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">
+        <div class="bubble">
+          Hi 👋 I’m here to share grounding tips and self-care ideas. How are you feeling today?
+        </div>
       </div>
     </div>
+    <div class="chat-footer">
+      <input id="chatInput" placeholder="Type a message…" />
+      <button id="chatSend">Send</button>
+    </div>
   </div>
-  <div class="chat-footer">
-    <input id="chatInput" placeholder="Type a message…" />
-    <button id="chatSend">Send</button>
-  </div>
-</div>
 
-<script>
-const WEBHOOK_URL = "https://n8ngc.codeblazar.org/webhook/f330b68b-3b5a-45b8-bb65-952280da2264";
+  <script>
+    const WEBHOOK_URL = "https://n8ngc.codeblazar.org/webhook/f330b68b-3b5a-45b8-bb65-952280da2264";
 
-const chatToggle = document.getElementById("chatToggle");
-const chatPanel = document.getElementById("chatPanel");
-const chatBody = document.getElementById("chatBody");
-const chatInput = document.getElementById("chatInput");
-const chatSend = document.getElementById("chatSend");
+    const chatToggle = document.getElementById("chatToggle");
+    const chatPanel = document.getElementById("chatPanel");
+    const chatBody = document.getElementById("chatBody");
+    const chatInput = document.getElementById("chatInput");
+    const chatSend = document.getElementById("chatSend");
 
-chatToggle.onclick = () => {
-  chatPanel.style.display =
-    chatPanel.style.display === "flex" ? "none" : "flex";
-};
+    chatToggle.onclick = () => {
+      chatPanel.style.display =
+        chatPanel.style.display === "flex" ? "none" : "flex";
+    };
 
-function addMessage(text, sender) {
-  const msg = document.createElement("div");
-  msg.className = "msg " + sender;
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
-  bubble.textContent = text;
-  msg.appendChild(bubble);
-  chatBody.appendChild(msg);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = "msg " + sender;
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+      msg.appendChild(bubble);
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-async function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-  addMessage(text, "user");
-  chatInput.value = "";
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      chatInput.value = "";
 
-  try {
-    const res = await fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text })
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        console.log("Webhook response:", data); // ✅ Debugging
+        addMessage(data.reply || "No response received.", "bot");
+      } catch (err) {
+        console.error("Chatbot error:", err);
+        addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
+      }
+    }
+
+    chatSend.onclick = sendMessage;
+    chatInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") sendMessage();
     });
-    const data = await res.json();
-    addMessage(data.reply || "No response received.", "bot");
-  } catch {
-    addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
-  }
-}
-
-chatSend.onclick = sendMessage;
-chatInput.addEventListener("keydown", e => {
-  if (e.key === "Enter") sendMessage();
-});
-
-try {
-  const res = await fetch(WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
-  });
-  const data = await res.json();
-  console.log("Webhook response:", data); // 👈 Add this
-  addMessage(data.reply || "No response received.", "bot");
-} catch (err) {
-  console.error("Chatbot error:", err); // 👈 Add this
-  addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
-}
-
-</script>
-
+  </script>
 </body>
 </html>
