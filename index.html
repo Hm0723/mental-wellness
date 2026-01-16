@@ -1,151 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mental Wellness Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#foundations">Foundations</a></li>
-      <li><a href="#exercises">Exercises</a></li>
-      <li><a href="#resources">Resources</a></li>
-      <li><a href="#mindfulness">Mindfulness</a></li>
-      <li><a href="#nutrition">Nutrition</a></li>
-      <li><a href="#stories">Stories</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero">
-    <h1>Mental Wellness Hub</h1>
-    <p>Your gentle space to learn, reflect, and practice small steps that support your wellbeing.</p>
-  </header>
-
-  <main>
-    <!-- Section 1 -->
-    <section id="foundations">
-      <h2>Self-care foundations</h2>
-      <div class="card">🛌 Sleep rhythm: keep a consistent wake time, dim lights before bed.</div>
-      <div class="card">🚶 Gentle movement: short walks, stretching, or light yoga.</div>
-      <div class="card">💬 Connection: text a friend, share a small win.</div>
-    </section>
-
-    <!-- Section 2 -->
-    <section id="exercises">
-      <h2>Grounding exercises</h2>
-      <div class="card">🌬 Box breathing: inhale 4, hold 4, exhale 4, hold 4.</div>
-      <div class="card">👀 5-4-3-2-1 senses: notice 5 see, 4 feel, 3 hear, 2 smell, 1 taste.</div>
-    </section>
-
-    <!-- Section 3 -->
-    <section id="resources">
-      <h2>Resources</h2>
-      <div class="card">🧠 Finding a therapist: check local directories or community clinics.</div>
-      <div class="card">🤝 Community & peers: support groups, NGOs, faith communities.</div>
-      <div class="card">🚨 In crisis: seek immediate in-person help from emergency services.</div>
-    </section>
-
-    <!-- Section 4 -->
-    <section id="mindfulness">
-      <h2>Mindfulness Practices</h2>
-      <div class="card">📝 Journaling: write down 3 things you’re grateful for.</div>
-      <div class="card">🎧 Guided meditation: try 5 minutes of focused breathing.</div>
-      <div class="card">🌳 Nature pause: step outside and notice your surroundings.</div>
-    </section>
-
-    <!-- Section 5 -->
-    <section id="nutrition">
-      <h2>Nutrition & Lifestyle</h2>
-      <div class="card">🥗 Balanced meals: include protein, veggies, and whole grains.</div>
-      <div class="card">💧 Hydration: aim for 6–8 glasses of water daily.</div>
-      <div class="card">☀️ Sunlight: get 10–15 minutes of natural light daily.</div>
-    </section>
-
-    <!-- Section 6 -->
-    <section id="stories">
-      <h2>Success Stories</h2>
-      <div class="card">✨ “I started journaling daily and noticed my stress levels drop.”</div>
-      <div class="card">💡 “Box breathing helped me calm down before presentations.”</div>
-      <div class="card">🌈 “Joining a support group gave me a sense of belonging.”</div>
-    </section>
-  </main>
-
-  <footer>
-    <p>This site provides general information only and isn’t medical advice.</p>
-  </footer>
-
-  <!-- Chatbot -->
-  <button class="chat-launcher" id="chatToggle">💬</button>
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">Wellness Chatbot</div>
-    <div class="chat-body" id="chatBody">
-      <div class="msg bot">
-        <div class="bubble">
-          Hi 👋 I’m here to share grounding tips and self-care ideas. How are you feeling today?
-        </div>
+<!-- Chatbot -->
+<button class="chat-launcher" id="chatToggle">💬</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">Wellness Chatbot</div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">
+      <div class="bubble">
+        Hi 👋 I’m here to share grounding tips and self-care ideas. How are you feeling today?
       </div>
     </div>
-    <div class="chat-footer">
-      <input id="chatInput" placeholder="Type a message…" />
-      <button id="chatSend">Send</button>
-    </div>
   </div>
+  <div class="chat-footer">
+    <input id="chatInput" placeholder="Type a message…" />
+    <button id="chatSend">Send</button>
+  </div>
+</div>
 
-  <script>
-    const WEBHOOK_URL = "https://n8ngc.codeblazar.org/webhook/f330b68b-3b5a-45b8-bb65-952280da2264";
+<script>
+  const WEBHOOK_URL = "https://n8ngc.codeblazar.org/webhook/f330b68b-3b5a-45b8-bb65-952280da2264";
 
-    const chatToggle = document.getElementById("chatToggle");
-    const chatPanel = document.getElementById("chatPanel");
-    const chatBody = document.getElementById("chatBody");
-    const chatInput = document.getElementById("chatInput");
-    const chatSend = document.getElementById("chatSend");
+  const chatToggle = document.getElementById("chatToggle");
+  const chatPanel = document.getElementById("chatPanel");
+  const chatBody = document.getElementById("chatBody");
+  const chatInput = document.getElementById("chatInput");
+  const chatSend = document.getElementById("chatSend");
 
-    chatToggle.onclick = () => {
-      chatPanel.style.display =
-        chatPanel.style.display === "flex" ? "none" : "flex";
-    };
+  chatToggle.onclick = () => {
+    chatPanel.style.display =
+      chatPanel.style.display === "flex" ? "none" : "flex";
+  };
 
-    function addMessage(text, sender) {
-      const msg = document.createElement("div");
-      msg.className = "msg " + sender;
-      const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      bubble.textContent = text;
-      msg.appendChild(bubble);
-      chatBody.appendChild(msg);
-      chatBody.scrollTop = chatBody.scrollHeight;
+  function addMessage(text, sender) {
+    const msg = document.createElement("div");
+    msg.className = "msg " + sender;
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = text;
+    msg.appendChild(bubble);
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMessage(text, "user");
+    chatInput.value = "";
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+      const data = await res.json();
+      addMessage(data.reply || data.output || "No response received.", "bot");
+    } catch (err) {
+      console.error("Chatbot error:", err);
+      addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
     }
+  }
 
-    async function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      addMessage(text, "user");
-      chatInput.value = "";
-
-      try {
-        const res = await fetch(WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text })
-        });
-        const data = await res.json();
-        console.log("Webhook response:", data);
-        addMessage(data.output || data.reply || "No response received.", "bot");
-      } catch (err) {
-        console.error("Chatbot error:", err);
-        addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
-      }
-    }
-
-    chatSend.onclick = sendMessage;
-    chatInput.addEventListener("keydown", e => {
-      if (e.key === "Enter") sendMessage();
-    });
-  </script>
-</body>
-</html>
+  chatSend.onclick = sendMessage;
+  chatInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") sendMessage();
+  });
+</script>
