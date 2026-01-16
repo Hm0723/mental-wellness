@@ -95,7 +95,7 @@
         });
         const data = await res.json();
         console.log("Webhook response:", data); // ✅ Debugging
-        addMessage(data.reply || "No response received.", "bot");
+        addMessage(data.output || "No response received.", "bot");
       } catch (err) {
         console.error("Chatbot error:", err);
         addMessage("⚠️ Unable to connect to the chatbot service.", "bot");
